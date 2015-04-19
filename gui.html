@@ -2,12 +2,16 @@
     <!--  <b>Bank:</b><input type="text" name="playerbank"> -->
     <head>
         <title>Poker Game</title>
+         <script src="sort.js"></script>
+        <script src="player.js"></script>
+        <script src="game.js"></script>
+        <script src="poker.js"></script>
     </head>
-    <body>
-        <table style="width:100%">
+    <body onload="run_game()">
+        <table style="width:100%" border="0">
             <tr>
-            <td style="50%">
-                <table border="1" style="border-collapse:collapse">
+            <td style="width:50%">
+                <table border="0" style="float:right">
                     <tr>
                         <td>
                             <h2 style="display:inline">Player</h2>
@@ -27,19 +31,19 @@
                     </tr>
                     <tr>
                         <td>
-                        <img src="images/0.png">
+                        <img src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/0.png">
+                        <img src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/0.png">
+                        <img src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/0.png">
+                        <img src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/0.png">
+                        <img src="images/54.png">
                         </td>
                     </tr>
                     <tr rowspan="2">
@@ -139,25 +143,144 @@
                     </tr>
                 </table>
             </td>
-            <td style="50%">
+            <td style="width:50%">
                     <table>
                         <tr>
-                            <td>
-                            <img src="images/0.png">
-                            </td>
-                            <td>
-                            <img src="images/0.png">
-                            </td>
-                            <td>
-                            <img src="images/0.png">
-                            </td>
-                            <td>
-                            <img src="images/0.png">
-                            </td>
-                            <td>
-                            <img src="images/0.png">
-                            </td>
-                        </tr>
+                        <td style="text-align:left">
+                            <b style="display:inline">CPU 1</b>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c1rank" style="">Rank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c1rank" size="8" type="text" disabled>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c1bank" style="">Bank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c1bank" size="8" style="float:left" type="text" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img id="c10" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c11" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c12" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c13" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c14" src="images/54.png">
+                        </td>
+                    </tr>
+                       <tr>
+                        <td style="text-align:left">
+                            <b style="display:inline">CPU 2</b>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c2rank" style="">Rank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c2rank" size="8" type="text" disabled>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c2bank" style="">Bank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c2bank" size="8" style="float:left" type="text" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img id="c20" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c21" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c22" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c23" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c24" src="images/54.png">
+                        </td>
+                    </tr>
+                           <tr>
+                        <td style="text-align:left">
+                            <b style="display:inline">CPU 3</b>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c3rank" style="">Rank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c3rank" size="8" type="text" disabled>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c3bank" style="">Bank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c3bank" size="8" style="float:left" type="text" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img id="c30" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c31" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c32" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c33" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c34" src="images/54.png">
+                        </td>
+                    </tr>
+                           <tr>
+                        <td style="text-align:left">
+                            <b style="display:inline">CPU 4</b>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c4rank" style="">Rank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c4rank" size="8" type="text" disabled>
+                        </td>
+                        <td style="text-align:right">
+                            <label for="c4bank" style="">Bank:</label>
+                        </td>
+                        <td colspan="1">
+                            <input id="c4bank" size="8" style="float:left" type="text" disabled>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <img id="c40" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c41" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c42" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c43" src="images/54.png">
+                        </td>
+                        <td>
+                        <img id="c44" src="images/54.png">
+                        </td>
+                    </tr>
                     </table>
                 </td>
             </tr>
