@@ -9,6 +9,7 @@ function Game(players) {
     for (var i = 0;i < this.decksize;i++){
         this.cards[i] = i;
     }
+    var round = 0;
     //value names array
     this.value_names =  ["Two of",
                         "Three of",
