@@ -9,7 +9,7 @@ function Game(players) {
     for (var i = 0;i < this.decksize;i++){
         this.cards[i] = i;
     }
-    var round = 0;
+    var roundnum = 0;
     //value names array
     this.value_names =  ["Two of",
                         "Three of",
@@ -150,7 +150,7 @@ Game.prototype.compare_players = function compare(ex_group,resolution){
     }
 }
 //get the sum of all the players bets
-Game.prototype.sum_bets = new function(){ 
+Game.prototype.sum = new function(){ 
     var sum = 0;
     //loop through players array
     for(var i = 0;i < this.num_players;i++){

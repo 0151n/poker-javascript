@@ -2,7 +2,7 @@
     <!--  <b>Bank:</b><input type="text" name="playerbank"> -->
     <head>
         <title>Poker Game</title>
-         <script src="sort.js"></script>
+        <script src="sort.js"></script>
         <script src="player.js"></script>
         <script src="game.js"></script>
         <script src="poker.js"></script>
@@ -31,19 +31,19 @@
                     </tr>
                     <tr>
                         <td>
-                        <img src="images/54.png">
+                        <img id="p1" src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/54.png">
+                        <img id="p2" src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/54.png">
+                        <img id="p3" src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/54.png">
+                        <img id="p4" src="images/54.png">
                         </td>
                         <td>
-                        <img src="images/54.png">
+                        <img id="p5" src="images/54.png">
                         </td>
                     </tr>
                     <tr rowspan="2">
@@ -132,14 +132,19 @@
                     </tr>
                     <tr>
                         <td colspan="1" style="text-align:center">
-                            <button type="button">Call</button>
+                            <button type="button" onclick="call()">Call</button>
                         </td>
                         <td colspan="1" style="text-align:center">
-                            <button type="button">Fold</button>
+                            <button type="button" onclick="fold()">Fold</button>
                         </td>
                         <td colspan="1" style="text-align:center">
-                            <button type="button">Bet</button>
+                            <button type="button" onclick="bet()">Bet</button>
                         </td>
+                    </tr>
+                    <tr>
+                    <td  colspan="3" style="text-align:center">
+                        <button id="nr" onclick="next()" type="button" disabled>Next Round</button>
+                    </td>
                     </tr>
                 </table>
             </td>
