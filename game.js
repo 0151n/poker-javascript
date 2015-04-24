@@ -9,7 +9,7 @@ function Game(players) {
     for (var i = 0;i < this.decksize;i++){
         this.cards[i] = i;
     }
-    var roundnum = 0;
+    this.roundnum = 1;
     //value names array
     this.value_names =  ["Two of",
                         "Three of",
@@ -150,37 +150,37 @@ Game.prototype.compare_players = function compare(ex_group,resolution){
     }
 }
 //get the sum of all the players bets
-Game.prototype.sum = new function(){ 
+Game.prototype.sum_bets = function(){ 
     var sum = 0;
     //loop through players array
     for(var i = 0;i < this.num_players;i++){
-        sum += this.players[i].bet;
+        sum += parseInt(this.players[i].bet);
     }
     return sum;
 }
 //get bets made by ai players
-Game.prototype.get_bets = new function(bet){
+Game.prototype.get_bets = function(bet){
     //loop through ai players
     //random numbers generated in if statements create
-    //the illusion of free will
+    //the illusion of free will (e.g. a better algorithm)
     for(var i = 1;i < this.num_players;i++){
         //check if player has enough money and has not folded
         if(bet <= this.players[i].bank && !this.players[i].folded){
             //if player has a high rank
-            if(players[i].ranks[0] < 8 || Math.floor(Math.random() * 1)== 1){
-                 players[i].set_bet(bet);
+            if(this.players[i].ranks[0] < 8 || Math.floor(Math.random() * 10) + 5 == 1){
+                 this.players[i].set_bet(bet);
             //if player has a pair of quite high value
-            }else if (( players[i].ranks[0] == 8 && players[i].subranks[0] > 9) || Math.floor(Math.random() * 1) == 1){
-                 players[i].set_bet(bet);
+            }else if (( this.players[i].ranks[0] == 8 && this.players[i].subranks[0] > 9) || Math.floor(Math.random() * 10) == 1){
+                 this.players[i].set_bet(bet);
             //bluff
             }else if(Math.floor(Math.random() * 9) == 1){
-                 players[i].set_bet(bet);
+                 this.players[i].set_bet(bet);
             }else{
-                 players[i].folded = true;
+                 this.players[i].folded = true;
             }
         }else{
             //puts "fold #{i}"
-            players[i].folded = true;
+            this.players[i].folded = true;
         } 
     }
 }

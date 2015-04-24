@@ -130,8 +130,8 @@ Player.prototype.get_rank = function(){
     sort_hand(this.subranks);
 }
 Player.prototype.set_bet = function(bet){
-		this.bet += bet;
-		this.bank -= bet;
+		this.bet += parseInt(bet);
+		this.bank -= parseInt(bet);
 }
 Player.prototype.reset = function(){
 		//initialize varaibles

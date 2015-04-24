@@ -16,6 +16,9 @@ function run_game() {
            image = document.getElementById("p" + (i + 1));
            image.src = ("images/" + game.players[0].hand[i] + ".png");
     }
+    document.getElementById("playerrank").value = game.ranks[game.players[0].ranks[0]];
+    reset_bets();
+    reset_all();
     hide_all();
 }
 function show_all(){
@@ -28,7 +31,7 @@ function show_all(){
            image.src = ("images/" + game.players[j].hand[i] + ".png");
         }
         rank = document.getElementById("c" + j + "rank");
-        rank.value = game.players[j].ranks[0];
+        rank.value =  game.ranks[game.players[j].ranks[0]];
     }
 }
 function hide_all(){
@@ -48,13 +51,13 @@ function reset_bets(){
     var playerbet = document.getElementById("playerbet");
     var playerbank = document.getElementById("playerbank");
     var totalbets = document.getElementById("totalbets");
-    playerbet.value = "$" + game.players[0].bet;
+    playerbet.value = "$" +  parseInt(game.players[0].bet);
     playerbank.value = "$" + game.players[0].bank;
     totalbets.value = "$" + game.sum_bets();
     for(var j = 1;j < 5;j++){
         var computerbet = document.getElementById("c" + j + "bet");
         var computerbank = document.getElementById("c" + j + "bank");
-        computerbet.value = "$" + game.players[j].bet;
+        computerbet.value = "$" +  parseInt(game.players[j].bet);
         computerbank.value = "$" + game.players[j].bank;
         if(game.players[j].folded){
             document.getElementById("c" + j).style.color = "red"
@@ -76,7 +79,7 @@ function call(){
         var winner = game.compare_players([true,true,true,true,true],0);
         if(winner > -1){
             document.getElementById("winner").value = (game.players[winner].name);
-            game.players[winner].bank += (game.sum_bets());
+            game.players[winner].bank += game.sum_bets();
         }else if(winner == -1){
             document.getElementById("winner").value = ("Tie");
         }
@@ -101,10 +104,10 @@ function fold(){
     }
 }
 function next(){
-    game.round();
+    round();
     reset_all();
-    hide_all();
     reset_bets();
+    hide_all();
     called = folded = false;
     document.getElementById("nr").disabled = true;
 }
@@ -116,11 +119,17 @@ function round(){
         game.players[i].get_rank();
         used = used.concat(used,game.players[i].hand);
     }
+    var image;
+    for(var i = 0;i < 5;i++){
+           image = document.getElementById("p" + (i + 1));
+           image.src = ("images/" + game.players[0].hand[i] + ".png");
+    }
+    document.getElementById("playerrank").value = game.ranks[game.players[0].ranks[0]];
     game.roundnum++;
 }
 function bet(){
-        var addbet = document.getElementById("addbet");
-        if(addbet != "" && addbet <= 1000 && !called && !folded){
+        var addbet = document.getElementById("addbet").value;
+        if(addbet != "" && addbet <= game.players[0].bank && !called && !folded){
             game.get_bets(addbet);
             game.players[0].set_bet(addbet);
             reset_bets();
